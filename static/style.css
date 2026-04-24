@@ -1,0 +1,7 @@
+body { font-family: Arial, sans-serif; background: #f0f4f8; }
+.container { max-width: 500px; margin: 60px auto; background: white; padding: 30px; border-radius: 10px; }
+h1 { color: #2c3e50; }
+label { display: block; margin: 12px 0 4px; }
+input { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 5px; }
+button { margin-top: 20px; padding: 10px 25px; background: #2980b9; color: white; border: none; border-radius: 5px; cursor: pointer; }
+.result { margin-top: 25px; padding: 15px; background: #eaf4fb; border-radius: 8px; }
