@@ -1,7 +1,121 @@
-body { font-family: Arial, sans-serif; background: #f0f4f8; }
-.container { max-width: 500px; margin: 60px auto; background: white; padding: 30px; border-radius: 10px; }
-h1 { color: #2c3e50; }
-label { display: block; margin: 12px 0 4px; }
-input { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 5px; }
-button { margin-top: 20px; padding: 10px 25px; background: #2980b9; color: white; border: none; border-radius: 5px; cursor: pointer; }
-.result { margin-top: 25px; padding: 15px; background: #eaf4fb; border-radius: 8px; }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Veliky_Ustyug_panorama.jpg/1280px-Veliky_Ustyug_panorama.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #222;
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: 0;
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 40px 20px 60px;
+}
+
+h1 {
+    text-align: center;
+    color: #fff;
+    font-size: 1.6rem;
+    margin-bottom: 28px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+    line-height: 1.4;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(6px);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+}
+
+.field {
+    margin-bottom: 20px;
+}
+
+.field label {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #333;
+    line-height: 1.4;
+}
+
+.field input {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    background: #fff;
+    transition: border-color 0.2s;
+}
+
+.field input:focus {
+    outline: none;
+    border-color: #2980b9;
+    box-shadow: 0 0 0 3px rgba(41,128,185,0.15);
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 13px;
+    background: #2980b9;
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background 0.2s;
+}
+
+button[type="submit"]:hover {
+    background: #1a6496;
+}
+
+.result-card {
+    text-align: center;
+}
+
+.result-card h2 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.result-value {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #1a6496;
+}
+
+.stats-card p {
+    font-size: 0.97rem;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.stats-card p:last-child {
+    margin-bottom: 0;
+}
