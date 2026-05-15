@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Графики прогнозов — г. Оренбург</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .graph-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="container">
+        <h1>Графики прогнозов и ошибок<br><small style="font-size:1rem; font-weight:400;">г. Оренбург (р. Урал)</small></h1>
+
+        <div class="graph-container">
+            <div id="graph1"></div>
+        </div>
+
+        <div class="graph-container">
+            <div id="graph2"></div>
+        </div>
+
+        <div style="text-align:center; margin-top: 10px;">
+            <a href="/" style="margin: 0 10px; text-decoration:none; color:white; background:#2980b9; padding:10px 20px; border-radius:8px; font-weight:600;">На главную</a>
+        </div>
+    </div>
+
+    <script>
+        var years = [1950, 1951, 1952, 1953, 1955, 1957, 1958, 1959, 1960, 1961, 1962, 1963, 1964, 1965, 1967, 1968, 1970, 1971, 1972, 1975, 1976, 1977, 1978, 1979, 1980, 1981, 1984, 1986, 1988, 1989, 1992, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2019, 2020, 2021, 2022, 2023];
+        var facts = [339, 353, 605, 492, 213, 908, 463, 536, 524, 401, 384, 538, 514, 306, 145, 263, 727, 676, 531, 226, 317, 250, 417, 481, 817, 838, 322, 746, 843, 669, 507, 974, 602, 579, 600, 909, 577, 929, 704, 776, 661, 793, 896, 349, 784, 466, 565, 512, 720, 644, 627, 725, 500, 712, 736, 264, 398, 469, 479, 676];
+        var preds = [360, 321, 486, 598, 197, 800, 609, 635, 657, 465, 415, 694, 521, 262, 182, 339, 572, 879, 637, 434, 370, 393, 407, 336, 740, 723, 506, 698, 744, 632, 516, 822, 507, 571, 494, 724, 701, 868, 624, 759, 660, 733, 922, 385, 825, 564, 338, 599, 653, 862, 581, 857, 429, 669, 636, 390, 419, 354, 348, 604];
+        var errors = facts.map((f, i) => f - preds[i]);
+        var rmse_line = years.map(() => 82);
+        var rmse_neg = years.map(() => -82);
+
+        var trace_fact = {
+            x: years, y: facts,
+            mode: 'lines+markers',
+            name: 'Факт',
+            line: { color: 'blue' },
+            marker: { size: 5 }
+        };
+        var trace_pred = {
+            x: years, y: preds,
+            mode: 'lines+markers',
+            name: 'Прогноз',
+            line: { color: 'red' },
+            marker: { size: 5 }
+        };
+
+        var layout1 = {
+            title: { text: 'Прогноз vs Факт' },
+            xaxis: { title: { text: 'Год' } },
+            yaxis: { title: { text: 'Уровень, см' } },
+            plot_bgcolor: '#E5ECF6',
+            paper_bgcolor: 'white',
+            legend: { x: 1, xanchor: 'right', y: 1 }
+        };
+
+        Plotly.newPlot('graph1', [trace_fact, trace_pred], layout1, {responsive: true});
+
+        var trace_err = {
+            x: years, y: errors,
+            mode: 'lines+markers',
+            name: 'Ошибка',
+            line: { color: 'orange' },
+            marker: { size: 5 }
+        };
+        var trace_pos = {
+            x: years, y: rmse_line,
+            mode: 'lines',
+            name: '+82 см (RMSE)',
+            line: { color: 'green', dash: 'dash' }
+        };
+        var trace_neg = {
+            x: years, y: rmse_neg,
+            mode: 'lines',
+            name: '−82 см (RMSE)',
+            line: { color: 'green', dash: 'dash' }
+        };
+
+        var layout2 = {
+            title: { text: 'Ошибка прогнозирования (Факт − Прогноз)' },
+            xaxis: { title: { text: 'Год' } },
+            yaxis: { title: { text: 'Ошибка (см)' } },
+            plot_bgcolor: '#E5ECF6',
+            paper_bgcolor: 'white',
+            legend: { x: 1, xanchor: 'right', y: 1 }
+        };
+
+        Plotly.newPlot('graph2', [trace_err, trace_pos, trace_neg], layout2, {responsive: true});
+    </script>
+</body>
+</html>
