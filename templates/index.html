@@ -3,27 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Прогноз паводка — Великий Устюг</title>
+    <title>Прогноз паводка — г. Оренбург</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <div class="overlay"></div>
 
     <div class="container">
-        <h1>Прогноз высшего срочного уровня воды<br>по г. Великий Устюг</h1>
+        <h1>Прогноз высшего срочного уровня воды<br>по г. Оренбург (р. Урал)</h1>
 
         <div class="card form-card">
             <form method="POST">
                 <div class="field">
-                    <label>1. Среднесуточный уровень вод, приходящийся на первый день ледохода по г. Великий Устюг:</label>
+                    <label>1. Среднесуточный уровень вод, приходящийся на первый день ледохода по г. Оренбург:</label>
                     <input type="number" name="input0" placeholder="Введите значение или оставьте пустым" step="any">
                 </div>
                 <div class="field">
-                    <label>2. Минимальный срочный уровень воды за декабрь по г. Великий Устюг:</label>
+                    <label>2. Минимальный срочный уровень воды за декабрь по г. Оренбург:</label>
                     <input type="number" name="input1" placeholder="Введите значение или оставьте пустым" step="any">
                 </div>
                 <div class="field">
-                    <label>3. Среднесуточный уровень воды по с. Кичменский Городок на дату начала ледохода в г. Великий Устюг:</label>
+                    <label>3. Среднесуточный уровень воды по р. Урал на дату начала ледохода в г. Оренбург:</label>
                     <input type="number" name="input2" placeholder="Введите значение или оставьте пустым" step="any">
                 </div>
                 <div class="field">
